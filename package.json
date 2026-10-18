@@ -10,7 +10,7 @@
     "db:init": "tsx src/scripts/init-vector-db.ts",
     "ingest": "tsx src/scripts/ingest.ts",
     "search": "tsx src/scripts/search.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "chat": "tsx src/scripts/chat.ts"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^3.0.71",
