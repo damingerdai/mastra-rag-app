@@ -1,0 +1,28 @@
+{
+  "name": "mastra-rag-app",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "db:init": "tsx src/scripts/init-vector-db.ts",
+    "ingest": "tsx src/scripts/ingest.ts",
+    "search": "tsx src/scripts/search.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@ai-sdk/openai-compatible": "^3.0.71",
+    "@mastra/core": "^1.78.0",
+    "@mastra/pg": "^1.31.2",
+    "@mastra/rag": "^2.6.7",
+    "ai": "^7.0.143",
+    "dotenv": "^18.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
