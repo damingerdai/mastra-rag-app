@@ -10,7 +10,9 @@
     "db:init": "tsx src/scripts/init-vector-db.ts",
     "ingest": "tsx src/scripts/ingest.ts",
     "search": "tsx src/scripts/search.ts",
-    "chat": "tsx src/scripts/chat.ts"
+    "chat": "tsx src/scripts/chat.ts",
+    "dev": "mastra dev",
+    "build": "mastra build"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^3.0.71",
@@ -18,10 +20,12 @@
     "@mastra/pg": "^1.31.2",
     "@mastra/rag": "^2.6.7",
     "ai": "^7.0.143",
-    "dotenv": "^18.0.8"
+    "dotenv": "^18.0.8",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
+    "mastra": "^1.34.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
