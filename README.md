@@ -36,13 +36,38 @@ DEEPSEEK_API_KEY=your-deepseek-api-key
 SILICONFLOW_BASE_URL=https://api.siliconflow.cn/v1
 ```
 
-The database must already exist. Initialize its vector index:
+The database must already exist. Apply the document metadata migrations, then initialize its vector index:
 
 ```sh
+npm run db:migrate
 npm run db:init
 ```
 
 Ingestion also initializes the index automatically. Run commands from the repository root so `dotenv` can load `.env`. Keep credentials out of version control.
+
+### Document metadata migrations
+
+Drizzle defines `documents`, `document_versions`, and `document_chunks` in
+`src/db/schema.ts`. Generated SQL and migration snapshots are committed in
+`drizzle/`. Configuration is in `drizzle.config.ts`, using the existing
+`POSTGRES_CONNECTION_STRING` for migration execution.
+
+After editing the schema, generate and review a migration before applying it:
+
+```sh
+npm run db:generate -- --name describe_change
+npm run db:migrate
+```
+
+Generation does not require a database connection. Migration execution requires
+the connection string and records applied migrations so subsequent runs apply
+only pending migrations. Drizzle manages these three metadata tables; the vector
+index remains managed by `db:init`.
+
+The schema follows the proposed SQL: `source_uri` is globally unique,
+`current_version_id` is a nullable UUID without a foreign key, and `updated_at`
+defaults to insertion time (updates must set it explicitly). The existing
+ingestion and retrieval services do not yet populate these metadata tables.
 
 ## Usage
 

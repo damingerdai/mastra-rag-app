@@ -7,6 +7,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "db:init": "tsx src/scripts/init-vector-db.ts",
     "ingest": "tsx src/scripts/ingest.ts",
     "search": "tsx src/scripts/search.ts",
@@ -22,10 +24,14 @@
     "@mastra/rag": "^2.6.7",
     "ai": "^7.0.143",
     "dotenv": "^18.0.8",
+    "drizzle-orm": "^0.45.4",
+    "pg": "^8.23.1",
+    "postgres": "^3.4.9",
     "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
+    "drizzle-kit": "^0.31.11",
     "mastra": "^1.34.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
