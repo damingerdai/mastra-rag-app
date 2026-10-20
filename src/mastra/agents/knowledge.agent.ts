@@ -2,6 +2,7 @@ import { Agent } from "@mastra/core/agent";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 
 import { knowledgeSearchTool } from "../tools/knowledge-search.tool.js";
+import { Memory } from "@mastra/memory";
 
 const deepseek = createOpenAICompatible({
     name: "deepseek",
@@ -32,4 +33,14 @@ export const knowledgeAgent = new Agent({
     tools: {
         knowledgeSearchTool,
     },
+    memory: new Memory({
+        options: {
+            lastMessages: 10,
+            workingMemory: {
+                enabled: true,
+                scope: "resource",
+            }
+        },
+
+    }),
 });
