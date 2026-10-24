@@ -1,14 +1,10 @@
 import { Agent } from "@mastra/core/agent";
-import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 
 import { knowledgeSearchTool } from "../tools/knowledge-search.tool.js";
 import { Memory } from "@mastra/memory";
+import { deepseek } from "../lib/deepseek.js";
 
-const deepseek = createOpenAICompatible({
-    name: "deepseek",
-    baseURL: "https://api.deepseek.com/v1",
-    apiKey: process.env.DEEPSEEK_API_KEY!,
-});
+
 
 export const knowledgeAgent = new Agent({
     id: "knowledge-agent",

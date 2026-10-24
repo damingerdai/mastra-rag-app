@@ -32,9 +32,18 @@ Create a `.env` file in the repository root with your own credentials:
 POSTGRES_CONNECTION_STRING=postgresql://username:password@localhost:5432/knowledge
 SILICONFLOW_API_KEY=your-siliconflow-api-key
 DEEPSEEK_API_KEY=your-deepseek-api-key
+# Bianxie API key for the article workflow:
+OPENAI_API_KEY=your-bianxie-api-key
 # Optional; this is the default embedding endpoint:
 SILICONFLOW_BASE_URL=https://api.siliconflow.cn/v1
 ```
+
+The Research, Research Formatter, Analysis, Writer, and Reviewer agents share
+`workflowModel` in `src/mastra/lib/openai.ts`: `gpt-4.1-mini` through
+`https://api.bianxie.ai/v1`. This uses the OpenAI SDK's Responses API
+(`/v1/responses`), so the relay must support that endpoint. Article workflow
+prompts and retrieved context are sent to Bianxie. The knowledge chat agent
+continues to use DeepSeek.
 
 The database must already exist. Apply the document metadata migrations, then initialize its vector index:
 

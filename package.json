@@ -17,6 +17,7 @@
     "build": "mastra build"
   },
   "dependencies": {
+    "@ai-sdk/openai": "4.0.96",
     "@ai-sdk/openai-compatible": "^3.0.71",
     "@mastra/core": "^1.78.0",
     "@mastra/memory": "^1.38.0",

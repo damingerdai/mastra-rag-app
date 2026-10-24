@@ -1,7 +1,7 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 
-import { retrieve } from "../services/retrieval.service.js";
+import { searchKnowledge } from "../services/retrieval.service.js";
 
 export const knowledgeSearchTool = createTool({
   id: "knowledge-search",
@@ -24,7 +24,9 @@ export const knowledgeSearchTool = createTool({
   }),
 
   execute: async ({ query }) => {
-    const results = await retrieve(query, 5);
+    const results = await searchKnowledge(query, {
+      topK: 5,
+    });
 
     return {
       results: results.map(({ source, text, score }) => ({
